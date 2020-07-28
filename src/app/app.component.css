@@ -26,10 +26,6 @@ p {
 }
 
 .toolbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   height: 60px;
   display: flex;
   align-items: center;
@@ -44,6 +40,11 @@ p {
   left: 0;
   right: 0;
   display: flex;
+}
+
+.app-header-content {
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .toolbar svg {

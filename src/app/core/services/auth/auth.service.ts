@@ -9,6 +9,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class AuthService {
   user: User;
+  loggedIn: boolean;
 
   constructor(
     public router: Router,
@@ -18,7 +19,10 @@ export class AuthService {
     this.angularFireAuth.authState.subscribe((user) => {
       if (user) {
         localStorage.setItem('user', JSON.stringify(user));
+        this.loggedIn = true;
         this.user = user;
+      } else {
+        this.logout();
       }
     });
   }
@@ -48,10 +52,15 @@ export class AuthService {
     }
   };
 
-  signOut = async () => {
-    await this.angularFireAuth.signOut();
-
+  logout = () => {
+    this.user = null;
+    this.loggedIn = false;
     localStorage.removeItem('user');
     this.router.navigate(['auth']);
+  };
+
+  signOut = async () => {
+    await this.angularFireAuth.signOut();
+    this.logout();
   };
 }
