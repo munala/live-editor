@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: 'AIzaSyAshBq8b3JFzIGOs9cM64FRfi7Ea9gRzzk',
+    authDomain: 'live-editor-23675.web.app',
+    databaseURL: 'https://live-editor-23675.firebaseio.com/',
+    projectId: 'live-editor-23675',
+    storageBucket: 'gs://live-editor-23675.appspot.com',
+    messagingSenderId: '36769514973',
+    appId: '1:36769514973:web:2b8f7ccb429f93bd3fe234',
+  },
 };
 
 /*
