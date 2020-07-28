@@ -9,10 +9,13 @@ import { AuthService } from './core/services/auth/auth.service';
 })
 export class AppComponent {
   title = 'Live Editor';
+
   constructor(public authService: AuthService) {}
+
   get isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
   }
+
   logout(): void {
     this.authService.logout();
   }

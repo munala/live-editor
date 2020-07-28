@@ -1,0 +1,33 @@
+.app-not-found-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1;
+}
+
+.app-not-found-text {
+  color: "#aaa";
+  margin: 20px;
+}
+
+.app-not-found-icon-wrapper {
+  width: 100px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.app-not-found-icon {
+  font-size: 100px;
+  min-width: 100px;
+}
+
+.app-not-found-title {
+  font-size: 50px;
+  color: "#aaa";
+}
+
+.app-not-found-subtitle {
+  font-size: 30px;
+  color: "#aaa";
+}
