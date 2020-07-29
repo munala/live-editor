@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuthComponent } from './modules/auth/auth.component';
-import { EditorComponent } from './modules/editor/editor.component';
-import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { EditorComponent } from './components/editor/editor.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
