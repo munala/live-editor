@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class LoginFormComponent implements OnInit {
   @Input() onSubmit: Function;
+
   constructor() {}
 
   ngOnInit(): void {}

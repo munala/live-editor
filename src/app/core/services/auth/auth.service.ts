@@ -26,13 +26,16 @@ export class AuthService {
       if (userFromLocalStorage) {
         this.user = userFromLocalStorage;
         this.loggedIn = true;
+
         observer.next(userFromLocalStorage);
       } else {
         this.angularFireAuth.authState.subscribe((user) => {
           if (user) {
             localStorage.setItem('user', JSON.stringify(user));
+
             this.loggedIn = true;
             this.user = user;
+
             observer.next(user);
           } else {
             this.logout();
@@ -73,12 +76,15 @@ export class AuthService {
   logout = () => {
     this.user = null;
     this.loggedIn = false;
+
     localStorage.removeItem('user');
+
     this.router.navigate(['auth']);
   };
 
   signOut = async () => {
     await this.angularFireAuth.signOut();
+
     this.logout();
   };
 }
