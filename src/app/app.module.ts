@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -40,6 +41,7 @@ import { LoginFormComponent } from './shared/components/login-form/login-form.co
     MatButtonModule,
     MatCardModule,
     MatDividerModule,
+    MatProgressBarModule,
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],

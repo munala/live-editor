@@ -1,7 +1,7 @@
 import {
   Component,
   OnInit,
-  AfterViewInit,
+  AfterContentInit,
   ViewChild,
   ElementRef,
 } from '@angular/core';
@@ -15,8 +15,9 @@ import { EditorService } from '../../core/services/editor/editor.service';
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.css'],
 })
-export class EditorComponent implements OnInit, AfterViewInit {
+export class EditorComponent implements OnInit, AfterContentInit {
   editor: any;
+  loading: boolean = false;
 
   @ViewChild('editable', {
     static: true,
@@ -27,7 +28,7 @@ export class EditorComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {}
 
-  ngAfterViewInit(): void {
+  ngAfterContentInit(): void {
     const editorOptions = {
       placeholder: {
         text: 'Type your text here. It will be saved automatically.',
@@ -43,10 +44,14 @@ export class EditorComponent implements OnInit, AfterViewInit {
       editorContext.editorService.save(event.target.innerHTML);
     });
 
+    this.loading = true;
+
     this.editorService
       .initEditor()
       .pipe(first())
       .subscribe((document) => {
+        this.loading = false;
+
         if (document?.content) this.editor.setContent(document.content);
       });
   }
