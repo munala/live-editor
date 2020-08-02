@@ -1,27 +1,23 @@
 # LiveEditor
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.4.
+This is a website that allows a user to type notes on the fly with automatic saving. The wesite is hosted [here](https://live-editor-23675.web.app/). This was build using [Angular 10](https://angular.io/) and [MediumEditor](https://github.com/yabwe/medium-editor).
 
-## Development server
+## Running the website
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Clone the repo by running `git clone https://github.com/munala/live-editor.git`.
+- Navigate into the folder `cd live-editor`.
+- Install dependencies `npm install`.
+- Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
+- Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Code scaffolding
+## Usage
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- After navigating to the website you will be greeted with the authentication page. You can only sing in using a Google account.
+- Press the `Connect With Google` button and select or create a Google account on the prompt that follows.
+- You will be redirected back to the website and taken to the editor page.
+- You will see a blank editor if this is your first time using the website. If you have used it before the editor will be pre-filled with your previously saved content. The editor supports the following text formats, with more coming in the future:
+  - Bold
+  - Italic
+  - Underline
+  - Link
+  - Header
