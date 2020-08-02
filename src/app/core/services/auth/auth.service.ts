@@ -1,4 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import { auth } from 'firebase/app';
 import { User } from '../../../shared/interfaces/user';
 import { Router } from '@angular/router';
@@ -10,20 +12,36 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class AuthService {
   user: User;
   loggedIn: boolean;
+  loggedInUser: Observable<any>;
 
   constructor(
     public router: Router,
     public ngZone: NgZone,
     public angularFireAuth: AngularFireAuth
-  ) {
-    this.angularFireAuth.authState.subscribe((user) => {
-      if (user) {
-        localStorage.setItem('user', JSON.stringify(user));
+  ) {}
+
+  initAuth(): void {
+    const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
+    this.loggedInUser = new Observable((observer) => {
+      if (userFromLocalStorage) {
+        this.user = userFromLocalStorage;
         this.loggedIn = true;
-        this.user = user;
+        observer.next(userFromLocalStorage);
       } else {
-        this.logout();
+        this.angularFireAuth.authState.subscribe((user) => {
+          if (user) {
+            localStorage.setItem('user', JSON.stringify(user));
+            this.loggedIn = true;
+            this.user = user;
+            observer.next(user);
+          } else {
+            this.logout();
+          }
+        });
       }
+      return {
+        unsubscribe() {},
+      };
     });
   }
 

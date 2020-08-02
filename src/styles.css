@@ -9,6 +9,7 @@ app-root {
   display: flex;
   height: 100%;
   flex-direction: column;
+  background-color: #eee;
 }
 
 app-page-not-found {

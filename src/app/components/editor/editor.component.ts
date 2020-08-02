@@ -6,6 +6,9 @@ import {
   ElementRef,
 } from '@angular/core';
 import { MediumEditor } from 'medium-editor';
+import { first } from 'rxjs/operators';
+
+import { EditorService } from '../../core/services/editor/editor.service';
 
 @Component({
   selector: 'app-editor',
@@ -20,29 +23,31 @@ export class EditorComponent implements OnInit, AfterViewInit {
   })
   editable: ElementRef;
 
-  constructor() {}
+  constructor(public editorService: EditorService) {}
 
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     const editorOptions = {
-      toolbar: {
-        /* These are the default options for the toolbar,
-           if nothing is passed this is what is used */
-        allowMultiParagraphSelection: true,
-        buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote'],
-        diffLeft: 0,
-        diffTop: -10,
-        firstButtonClass: 'medium-editor-button-first',
-        lastButtonClass: 'medium-editor-button-last',
-        relativeContainer: null,
-        standardizeSelectionStart: false,
-        static: false,
+      placeholder: {
+        text: 'Type your text here. It will be saved automatically.',
+        hideOnClick: false,
       },
     };
+
     this.editor = new MediumEditor(this.editable.nativeElement, editorOptions);
-    this.editor.subscribe('editableInput', function (event, editable) {
-      console.log({ event, editable });
+
+    const editorContext = this;
+
+    this.editor.subscribe('editableInput', (event: any) => {
+      editorContext.editorService.save(event.target.innerHTML);
     });
+
+    this.editorService
+      .initEditor()
+      .pipe(first())
+      .subscribe((document) => {
+        if (document?.content) this.editor.setContent(document.content);
+      });
   }
 }
