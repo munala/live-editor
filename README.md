@@ -1,6 +1,6 @@
 # LiveEditor
 
-This is a website that allows a user to type notes on the fly with automatic saving. The wesite is hosted [here](https://live-editor-23675.web.app/). This was build using [Angular 10](https://angular.io/) and [MediumEditor](https://github.com/yabwe/medium-editor).
+This is a website that allows a user to type notes on the fly with automatic saving. The website is hosted [here](https://live-editor-23675.web.app/). This was build using [Angular 10](https://angular.io/) and [MediumEditor](https://github.com/yabwe/medium-editor).
 
 ## Running the website
 
