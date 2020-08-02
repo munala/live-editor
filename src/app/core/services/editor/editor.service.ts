@@ -3,7 +3,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 import { AuthService } from '../auth/auth.service';
-import { Document } from '../../../shared/interfaces/document';
 import { User } from '../../../shared/interfaces/user';
 
 @Injectable({
@@ -20,13 +19,21 @@ export class EditorService {
   ) {}
 
   initEditor(): Observable<any> {
-    this.authService.loggedInUser.subscribe({
-      next: (loggedInUser) => {
-        this.loggedInUser = loggedInUser;
-      },
-    });
+    let storedUser = localStorage.getItem('user');
 
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+
+      this.loggedInUser = <User>user;
+    } else {
+      this.authService.loggedInUser.subscribe({
+        next: (loggedInUser) => {
+          this.loggedInUser = loggedInUser;
+        },
+      });
+    }
     this.collectionReference = this.database.collection(`documents`);
+
     this.documentReference = this.collectionReference.doc(
       this.loggedInUser.uid
     );
