@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="app-header-content">
+    <span>Live Editor</span>
+
+    <button
+      mat-icon-button
+      *ngIf="isLoggedIn"
+      aria-hidden="false"
+      aria-label="Signout"
+      (click)="logout()"
+    >
+      <mat-icon aria-hidden="false" aria-label="Logout">logout</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
