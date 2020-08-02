@@ -7,6 +7,22 @@ This is a website that allows a user to type notes on the fly with automatic sav
 - Clone the repo by running `git clone https://github.com/munala/live-editor.git`.
 - Navigate into the folder `cd live-editor`.
 - Install dependencies `npm install`.
+- Create a folder inside `src` folder called environments, create two files `environment.ts` and `environment.prod.ts` for production, and inside them add the following content:
+  ```
+  export const environment = {
+    production: false, // `true` in `environment.prod.ts`
+    firebaseConfig: {
+      apiKey: <api_key>,
+      authDomain: <auth_domain>,
+      databaseURL: <databse_url>,
+      projectId: <project_id>,
+      storageBucket: <storage_bucket>,
+      messagingSenderId: <messaging_sendr_id>,
+      appId: <app_id>
+    }
+  };
+  ```
+  The values have not been posted for security reasons.
 - Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 - Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 

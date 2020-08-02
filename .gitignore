@@ -47,3 +47,5 @@ Thumbs.db
 
 # Firebase cache
 *.cache
+# App environment
+/src/environments/*
