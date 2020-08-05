@@ -127,15 +127,15 @@ export class EditorComponent implements OnInit, AfterContentInit {
         return;
       }
 
-      this.latexEquation = `${this.latexEquation.substring(
+      this.latexEquation = this.latexEquation.substring(
         0,
         this.latexEquation.length - 1
-      )}`;
+      );
 
-      this.latexEquationRaw = `${this.latexEquationRaw.substring(
+      this.latexEquationRaw = this.latexEquationRaw.substring(
         0,
         this.latexEquationRaw.length - 1
-      )}`;
+      );
     }
   }
 
